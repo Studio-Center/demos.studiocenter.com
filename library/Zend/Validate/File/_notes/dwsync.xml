@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Count.php" server="66.147.244.197//public_html/" local="129482175055833806" remote="129501949200000000" />
+<file name="Crc32.php" server="66.147.244.197//public_html/" local="129482175054203713" remote="129501949200000000" />
+<file name="ExcludeExtension.php" server="66.147.244.197//public_html/" local="129482175054193712" remote="129501949200000000" />
+<file name="ExcludeMimeType.php" server="66.147.244.197//public_html/" local="129482175051003530" remote="129501949200000000" />
+<file name="Exists.php" server="66.147.244.197//public_html/" local="129482175048913410" remote="129501949200000000" />
+<file name="Extension.php" server="66.147.244.197//public_html/" local="129482175047733343" remote="129501949200000000" />
+<file name="FilesSize.php" server="66.147.244.197//public_html/" local="129482175046573276" remote="129501949200000000" />
+<file name="Hash.php" server="66.147.244.197//public_html/" local="129482175045863236" remote="129501949200000000" />
+<file name="ImageSize.php" server="66.147.244.197//public_html/" local="129482175043973128" remote="129501949200000000" />
+<file name="IsCompressed.php" server="66.147.244.197//public_html/" local="129482175042223028" remote="129501949200000000" />
+<file name="IsImage.php" server="66.147.244.197//public_html/" local="129482175041562990" remote="129501949200000000" />
+<file name="Md5.php" server="66.147.244.197//public_html/" local="129482175040792946" remote="129501949200000000" />
+<file name="MimeType.php" server="66.147.244.197//public_html/" local="129482175037832776" remote="129501949200000000" />
+<file name="NotExists.php" server="66.147.244.197//public_html/" local="129482175036952726" remote="129501949800000000" />
+<file name="Sha1.php" server="66.147.244.197//public_html/" local="129482175036012672" remote="129501949800000000" />
+<file name="Size.php" server="66.147.244.197//public_html/" local="129482175031252400" remote="129501949800000000" />
+<file name="Upload.php" server="66.147.244.197//public_html/" local="129482175028142222" remote="129501949800000000" />
+<file name="WordCount.php" server="66.147.244.197//public_html/" local="129482175027492185" remote="129501949800000000" />
+</dwsync>

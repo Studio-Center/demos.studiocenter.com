@@ -1,0 +1,738 @@
+<IfModule php5_module>
+php_value newrelic.appname "StudioCenter.Com"
+</IfModule>
+<IfModule pagespeed_module>
+    AddOutputFilterByType MOD_PAGESPEED_OUTPUT_FILTER text/html
+    ModPagespeed off
+    
+    ModPagespeedDisallow https://*
+    
+    ModPagespeedLowercaseHtmlNames on
+ 
+    ModPagespeedEnableFilters extend_cache
+    ModPagespeedEnableFilters insert_dns_prefetch
+ 
+#
+# Text / HTML
+#
+ 
+    ModPagespeedEnableFilters collapse_whitespace
+    ModPagespeedEnableFilters convert_meta_tags
+    ModPagespeedEnableFilters remove_comments
+    ModPagespeedEnableFilters collapse_whitespace
+    ModPagespeedEnableFilters elide_attributes
+    #ModPagespeedEnableFilters trim_urls
+    #ModPagespeedEnableFilters pedantic
+ 
+#
+# JavaScript
+#
+ 
+    ModPagespeedEnableFilters combine_javascript
+    ModPagespeedEnableFilters canonicalize_javascript_libraries
+    ModPagespeedEnableFilters rewrite_javascript
+    #ModPagespeedEnableFilters defer_javascript
+    ModPagespeedEnableFilters inline_javascript
+ 
+#
+# CSS
+#
+ 
+    ModPagespeedEnableFilters rewrite_css
+    ModPagespeedEnableFilters combine_css
+    ModPagespeedEnableFilters move_css_to_head
+    ModPagespeedEnableFilters inline_css
+    ModPagespeedEnableFilters inline_import_to_link
+    ModPagespeedEnableFilters move_css_above_scripts
+ 
+#
+# Images
+#
+ 
+    ModPagespeedEnableFilters inline_preview_images
+    ModPagespeedEnableFilters insert_img_dimensions
+    ModPagespeedEnableFilters rewrite_images
+    ModPagespeedEnableFilters recompress_images
+    ModPagespeedEnableFilters convert_jpeg_to_progressive
+    ModPagespeedEnableFilters resize_mobile_images
+    ModPagespeedEnableFilters sprite_images
+    ModPagespeedEnableFilters lazyload_images
+ 
+    #ModPagespeedEnableFilters local_storage_cache
+ 
+</IfModule>
+#
+# Apache/PHP/Drupal settings:
+#
+
+# Protect files and directories from prying eyes.
+<FilesMatch "\.(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)(~|\.sw[op]|\.bak|\.orig|\.save)?$|^(\..*|Entries.*|Repository|Root|Tag|Template)$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig\.save)$">
+  Order allow,deny
+</FilesMatch>
+
+# Don't show directory listings for URLs which map to a directory.
+Options -Indexes
+
+# Follow symbolic links in this directory.
+Options +FollowSymLinks
+
+# Make Drupal handle any 404 errors.
+ErrorDocument 404 /index.php
+
+# Set the default handler.
+DirectoryIndex index.php index.html index.htm
+
+# Override PHP settings that cannot be changed at runtime. See
+# sites/default/default.settings.php and drupal_environment_initialize() in
+# includes/bootstrap.inc for settings that can be changed at runtime.
+
+# PHP 5, Apache 1 and 2.
+<IfModule mod_php5.c>
+  php_flag magic_quotes_gpc                 off
+  php_flag magic_quotes_sybase              off
+  php_flag register_globals                 off
+  php_flag session.auto_start               off
+  php_value mbstring.http_input             pass
+  php_value mbstring.http_output            pass
+  php_flag mbstring.encoding_translation    off
+</IfModule>
+
+# ##############################################################################
+# # MIME TYPES AND ENCODING                                                    #
+# ##############################################################################
+
+# ------------------------------------------------------------------------------
+# | Proper MIME types for all files                                            |
+# ------------------------------------------------------------------------------
+
+<IfModule mod_mime.c>
+
+  # Audio
+    AddType audio/mp4                                   m4a f4a f4b
+    AddType audio/ogg                                   oga ogg
+
+  # JavaScript
+    # Normalize to standard type (it's sniffed in IE anyways):
+    # http://tools.ietf.org/html/rfc4329#section-7.2
+    AddType application/javascript                      js
+    AddType application/json                            json
+
+  # Video
+    AddType video/mp4                                   mp4 m4v f4v f4p
+    AddType video/ogg                                   ogv
+    AddType video/webm                                  webm
+    AddType video/x-flv                                 flv
+
+  # Web fonts
+    AddType application/font-woff                       woff
+    AddType application/vnd.ms-fontobject               eot
+
+    # Browsers usually ignore the font MIME types and sniff the content,
+    # however, Chrome shows a warning if other MIME types are used for the
+    # following fonts.
+    AddType application/x-font-ttf                      ttc ttf
+    AddType font/opentype                               otf
+
+    # Make SVGZ fonts work on iPad:
+    # https://twitter.com/FontSquirrel/status/14855840545
+    AddType     image/svg+xml                           svg svgz
+    AddEncoding gzip                                    svgz
+
+  # Other
+    AddType application/octet-stream                    safariextz
+    AddType application/x-chrome-extension              crx
+    AddType application/x-opera-extension               oex
+    AddType application/x-shockwave-flash               swf
+    AddType application/x-web-app-manifest+json         webapp
+    AddType application/x-xpinstall                     xpi
+    AddType application/xml                             atom rdf rss xml
+    AddType image/webp                                  webp
+    AddType image/x-icon                                ico
+    AddType text/cache-manifest                         appcache manifest
+    AddType text/vtt                                    vtt
+    AddType text/x-component                            htc
+    AddType text/x-vcard                                vcf
+
+</IfModule>
+# ------------------------------------------------------------------------------
+# | UTF-8 encoding                                                             |
+# ------------------------------------------------------------------------------
+
+# Use UTF-8 encoding for anything served as `text/html` or `text/plain`.
+AddDefaultCharset utf-8
+
+# Force UTF-8 for certain file formats.
+<IfModule mod_mime.c>
+    AddCharset utf-8 .atom .css .js .json .rss .vtt .webapp .xml
+</IfModule>
+# ------------------------------------------------------------------------------
+# | Compression                                                                |
+# ------------------------------------------------------------------------------
+
+<IfModule mod_deflate.c>
+
+    # Force compression for mangled headers.
+    # http://developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping
+    <IfModule mod_setenvif.c>
+        <IfModule mod_headers.c>
+            SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+            RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+        </IfModule>
+    </IfModule>
+
+    # Compress all output labeled with one of the following MIME-types
+    # (for Apache versions below 2.3.7, you don't need to enable `mod_filter`
+    #  and can remove the `<IfModule mod_filter.c>` and `</IfModule>` lines
+    #  as `AddOutputFilterByType` is still in the core directives).
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE application/atom+xml \
+                                      application/javascript \
+                                      application/json \
+                                      application/rss+xml \
+                                      application/vnd.ms-fontobject \
+                                      application/x-font-ttf \
+                                      application/x-web-app-manifest+json \
+                                      application/xhtml+xml \
+                                      application/xml \
+                                      font/opentype \
+                                      image/svg+xml \
+                                      image/x-icon \
+                                      text/css \
+                                      text/html \
+                                      text/plain \
+                                      text/x-component \
+                                      text/xml
+    </IfModule>
+
+</IfModule>
+# ------------------------------------------------------------------------------
+# | ETag removal                                                               |
+# ------------------------------------------------------------------------------
+
+# Since we're sending far-future expires headers (see below), ETags can
+# be removed: http://developer.yahoo.com/performance/rules.html#etags.
+
+# `FileETag None` is not enough for every server.
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+
+FileETag None
+# ------------------------------------------------------------------------------
+# | Expires headers (for better cache control)                                 |
+# ------------------------------------------------------------------------------
+
+# The following expires headers are set pretty far in the future. If you don't
+# control versioning with filename-based cache busting, consider lowering the
+# cache time for resources like CSS and JS to something like 1 week.
+
+<IfModule mod_expires.c>
+
+    ExpiresActive on
+    ExpiresDefault                                      "access plus 1 month"
+
+  # CSS
+    ExpiresByType text/css                              "access plus 1 year"
+
+  # Data interchange
+    ExpiresByType application/json                      "access plus 0 seconds"
+    ExpiresByType application/xml                       "access plus 0 seconds"
+    ExpiresByType text/xml                              "access plus 0 seconds"
+
+  # Favicon (cannot be renamed!)
+    ExpiresByType image/x-icon                          "access plus 1 week"
+
+  # HTML components (HTCs)
+    ExpiresByType text/x-component                      "access plus 1 month"
+
+  # HTML
+    ExpiresByType text/html                             "access plus 0 seconds"
+
+  # JavaScript
+    ExpiresByType application/javascript                "access plus 1 year"
+
+  # Manifest files
+    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+
+  # Media
+    ExpiresByType audio/ogg                             "access plus 1 month"
+    ExpiresByType image/gif                             "access plus 1 month"
+    ExpiresByType image/jpeg                            "access plus 1 month"
+    ExpiresByType image/png                             "access plus 1 month"
+    ExpiresByType video/mp4                             "access plus 1 month"
+    ExpiresByType video/ogg                             "access plus 1 month"
+    ExpiresByType video/webm                            "access plus 1 month"
+
+  # Web feeds
+    ExpiresByType application/atom+xml                  "access plus 1 hour"
+    ExpiresByType application/rss+xml                   "access plus 1 hour"
+
+  # Web fonts
+    ExpiresByType application/font-woff                 "access plus 1 month"
+    ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
+    ExpiresByType application/x-font-ttf                "access plus 1 month"
+    ExpiresByType font/opentype                         "access plus 1 month"
+    ExpiresByType image/svg+xml                         "access plus 1 month"
+
+</IfModule>
+
+
+# Requires mod_expires to be enabled.
+<IfModule mod_expires.c>
+  # Enable expirations.
+  ExpiresActive On
+
+  # Cache all files for 2 weeks after access (A).
+  ExpiresDefault A1209600
+
+  <FilesMatch \.php$>
+    # Do not allow PHP scripts to be cached unless they explicitly send cache
+    # headers themselves. Otherwise all scripts would have to overwrite the
+    # headers set by mod_expires if they want another caching behavior. This may
+    # fail if an error occurs early in the bootstrap process, and it may cause
+    # problems if a non-Drupal PHP file is installed in a subdirectory.
+    ExpiresActive Off
+  </FilesMatch>
+</IfModule>
+
+# Various rewrite rules.
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+  # htaccess spambot black list
+	RewriteCond %{HTTP_USER_AGENT} almaden [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Anarchie [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^ASPSeek [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^attach [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^autoemailspider [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^BackWeb [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Bandit [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^BatchFTP [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^BlackWidow [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Bot\ mailto:craftbot@yahoo.com [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Buddy [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^bumblebee [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^CherryPicker [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^ChinaClaw [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^CICC [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Collector [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Copier [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Crescent [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Custo [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^DA [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^DIIbot [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^DISCo [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^DISCo\ Pump [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Download\ Demon [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Download\ Wonder [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Downloader [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Drip [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^DSurf15a [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^eCatch [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^EasyDL/2.99 [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^EirGrabber [OR]
+	RewriteCond %{HTTP_USER_AGENT} email [NC,OR]
+	RewriteCond %{HTTP_USER_AGENT} ^EmailCollector [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^EmailSiphon [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^EmailWolf [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Express\ WebPictures [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^ExtractorPro [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^EyeNetIE [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^FileHound [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^FlashGet [OR]
+	RewriteCond %{HTTP_USER_AGENT} FrontPage [NC,OR]
+	RewriteCond %{HTTP_USER_AGENT} ^GetRight [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^GetSmart [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^GetWeb! [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^gigabaz [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Go\!Zilla [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Go!Zilla [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Go-Ahead-Got-It [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^gotit [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Grabber [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^GrabNet [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Grafula [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^grub-client [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^HMView [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^HTTrack [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^httpdown [OR]
+	RewriteCond %{HTTP_USER_AGENT} .*httrack.* [NC,OR]
+	RewriteCond %{HTTP_USER_AGENT} ^ia_archiver [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Image\ Stripper [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Image\ Sucker [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Indy*Library [OR]
+	RewriteCond %{HTTP_USER_AGENT} Indy\ Library [NC,OR]
+	RewriteCond %{HTTP_USER_AGENT} ^InterGET [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^InternetLinkagent [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Internet\ Ninja [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^InternetSeer.com [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Iria [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^JBH*agent [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^JetCar [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^JOC\ Web\ Spider [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^JustView [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^larbin [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^LeechFTP [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^LexiBot [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^lftp [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Link*Sleuth [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^likse [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Link [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^LinkWalker [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Mag-Net [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Magnet [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Mass\ Downloader [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Memo [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Microsoft.URL [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^MIDown\ tool [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Mirror [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Mister\ PiX [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Mozilla.*Indy [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Mozilla.*NEWT [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Mozilla*MSIECrawler [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^MS\ FrontPage* [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^MSFrontPage [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^MSIECrawler [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^MSProxy [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Navroad [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^NearSite [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^NetAnts [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^NetMechanic [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^NetSpider [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Net\ Vampire [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^NetZIP [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^NICErsPRO [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Ninja [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Octopus [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Offline\ Explorer [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Offline\ Navigator [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Openfind [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^PageGrabber [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Papa\ Foto [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^pavuk [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^pcBrowser [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Ping [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^PingALink [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Pockey [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^psbot [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Pump [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^QRVA [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^RealDownload [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Reaper [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Recorder [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^ReGet [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Scooter [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Seeker [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Siphon [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^sitecheck.internetseer.com [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^SiteSnagger [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^SlySearch [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^SmartDownload [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Snake [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^SpaceBison [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^sproose [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Stripper [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Sucker [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^SuperBot [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^SuperHTTP [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Surfbot [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Szukacz [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^tAkeOut [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Teleport\ Pro [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^URLSpiderPro [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Vacuum [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^VoidEYE [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Web\ Image\ Collector [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Web\ Sucker [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebAuto [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^[Ww]eb[Bb]andit [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^webcollage [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebCopier [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Web\ Downloader [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebEMailExtrac.* [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebFetch [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebGo\ IS [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebHook [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebLeacher [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebMiner [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebMirror [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebReaper [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebSauger [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Website [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Website\ eXtractor [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Website\ Quester [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Webster [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebStripper [OR]
+	RewriteCond %{HTTP_USER_AGENT} WebWhacker [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WebZIP [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Wget [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Whacker [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Widow [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^WWWOFFLE [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^x-Tractor [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Xaldon\ WebSpider [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Xenu [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Zeus.*Webster [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^Zeus
+	RewriteRule ^.* - [F,L]
+
+ 
+  # old page redirects
+  # redirect all voice talents
+  RewriteRule ^voice-over-talent/(.*)-(.*).aspx /voice-talent/$1-$2 [R=301,QSA,L]
+  # redirect all on camera
+  RewriteRule ^on-camera-talent/(.*)-(.*).aspx /on-camera-talent/$1-$2 [R=301,QSA,L]
+  # single page redirect
+RewriteRule ^sctpsurvey.aspx /studio-center-survey [R=301,QSA,L]
+  RewriteRule ^guarantee.aspx /we-keep-it-guarantee [R=301,QSA,L]
+  RewriteRule ^voice-over-talent.aspx /talent/voiceover-talent [R=301,QSA,L]
+  RewriteRule ^voice-over-talent/search-all-voices.aspx /voiceover-talent/search-all-voices [R=301,QSA,L]
+  RewriteRule ^voice-over-talent/male-voices.aspx /voiceover-talent/top-ten-male-voices [R=301,QSA,L]
+  RewriteRule ^voice-over-talent/female-voices.aspx /voiceover-talent/top-ten-female-voices [R=301,QSA,L]
+  # RewriteRule ^voice-over-talent/kids-voices.aspx /voiceover-talent/kids-voices [R=301,QSA,L]
+  RewriteRule ^voice-over-talent/new-voices.aspx /talent/voiceover-talent [R=301,QSA,L]
+  RewriteRule ^sign-up-for-new-talent-updates.aspx /talent/voiceover-talent [R=301,QSA,L]
+  RewriteRule ^voice-over-talent/foreign-language-voices.aspx /voiceover-talent/foreign-voices [R=301,QSA,L]
+  RewriteRule ^video-production/view-our-reels.aspx /video [R=301,QSA,L]
+  RewriteRule ^video-production/motion-graphics.aspx /video/motion-graphics [R=301,QSA,L]
+  RewriteRule ^motion-graphics-reels.aspx /video/motion-graphics [R=301,QSA,L]
+  RewriteRule ^video-production.aspx /video/video-reels [R=301,QSA,L]
+  RewriteRule ^video-production/TVcommercials.aspx /video/video-reels/short-form [R=301,QSA,L]
+  RewriteRule ^video-production/tvcommercials.aspx /video/video-reels/short-form [R=301,QSA,L]
+  RewriteRule ^video-production/view-our-reels/long-form.aspx /video/video-reels/long-form [R=301,QSA,L]
+  RewriteRule ^video-production/editor_reels.aspx /video/video-reels/staff-reels [R=301,QSA,L]
+  RewriteRule ^video-production/bboniface.aspx /video/video-reels/staff-reels [R=301,QSA,L]
+  RewriteRule ^video-production/ckarvellas.aspx /staff-reels/chris-karvellas [R=301,QSA,L]
+  RewriteRule ^video-production/jrussell.aspx /staff-reels/jeff-russell [R=301,QSA,L]
+  RewriteRule ^video-production/rnewberry.aspx /video/video-reels/staff-reels [R=301,QSA,L]
+  RewriteRule ^video-production/sstrickland.aspx /staff-reels/steve-strickland [R=301,QSA,L]
+  RewriteRule ^video-production/nkleczewski.aspx /nick-kleczewski [R=301,QSA,L]
+  RewriteRule ^video-production/nburns.aspx /staff-reels/nathan-burns [R=301,QSA,L]
+  RewriteRule ^video-production/video-production/nburns.aspx /staff-reels/nathan-burns [R=301,QSA,L]
+  RewriteRule ^video-production/bbartusiak.aspx /video/video-reels/staff-reels [R=301,QSA,L]
+  RewriteRule ^video-production/hgarrett.aspx /video/video-reels/staff-reels [R=301,QSA,L]
+  RewriteRule ^jason-russell.aspx /video/video-reels/staff-reels [R=301,QSA,L]
+  RewriteRule ^corporate-video-production.aspx /video/video-reels/corporate-video [R=301,QSA,L]
+  RewriteRule ^scoriginals.aspx /video/video-reels/sc-originals [R=301,QSA,L]
+  RewriteRule ^production-video.aspx /video/video-production [R=301,QSA,L]
+  RewriteRule ^pre-production-video.aspx /video/video-pre-production [R=301,QSA,L]
+  RewriteRule ^video-production/full-crew.aspx /video/full-crew-production [R=301,QSA,L]
+  #RewriteRule ^video-production/shooting.aspx /video/plan-video-shoot [R=301,QSA,L]
+  RewriteRule ^video-production/shooting.aspx /video [R=301,QSA,L]
+  RewriteRule ^audio-production/audio-post-production.aspx /audio [R=301,QSA,L]
+  RewriteRule ^audio-production.aspx /audio [R=301,QSA,L]
+  RewriteRule ^audio-production/radio-production.aspx /audio/radio-production [R=301,QSA,L]
+  RewriteRule ^audio-production/ivr-phone-hold-messages.aspx /audio/hold-messaging [R=301,QSA,L]
+  RewriteRule ^audio-production/mix-of-the-week.aspx /audio/mix-week [R=301,QSA,L]
+  RewriteRule ^newmedia.aspx /new-media [R=301,QSA,L]
+  RewriteRule ^webdesign.aspx /new-media/web-design [R=301,QSA,L]
+  RewriteRule ^onlinevideo.aspx /new-media/online-video [R=301,QSA,L]
+  RewriteRule ^seosem.aspx /new-media/seo-sem [R=301,QSA,L]
+  RewriteRule ^on-camera-talent.aspx /talent/camera-talent [R=301,QSA,L]
+  RewriteRule ^on-camera-talent/search-all-actors.aspx /camera-talent/search-all-actors [R=301,QSA,L]
+  RewriteRule ^on-camera-talent/male-actors.aspx /camera-talent/male-actors [R=301,QSA,L]
+  RewriteRule ^on-camera-talent/female-actors.aspx /camera-talent/female-actors [R=301,QSA,L]
+  RewriteRule ^on-camera-talent/child-actors-male.aspx /camera-talent/child-actors-male [R=301,QSA,L]
+  RewriteRule ^on-camera-talent/child-actors-female.aspx /camera-talent/child-actors-female [R=301,QSA,L]
+  RewriteRule ^political.aspx /political [R=301,QSA,L]
+  RewriteRule ^politicalvideo.aspx /political/political-video-samples [R=301,QSA,L]
+  RewriteRule ^audiopoliticals.aspx /political/political-audio-samples [R=301,QSA,L]
+  RewriteRule ^studios.aspx /locations [R=301,QSA,L]
+  RewriteRule ^studios/las-vegas-nv.aspx /locations/las-vegas-nv [R=301,QSA,L]
+  RewriteRule ^studios/santa-monica-ca.aspx /locations/lasanta-monica-ca [R=301,QSA,L]
+  RewriteRule ^studios/new-york-ny.aspx /locations/new-york-ny [R=301,QSA,L]
+  RewriteRule ^studios/richmond-va.aspx /locations/richmond-va [R=301,QSA,L]
+  RewriteRule ^studios/virginia-beach-va-audio.aspx /locations/virginia-beach-va-audio [R=301,QSA,L]
+  RewriteRule ^about-us.aspx /locations/about-us [R=301,QSA,L]
+  RewriteRule ^about-us/team.aspx /locations/team [R=301,QSA,L]
+  RewriteRule ^contact-us.aspx /contact-us [R=301,QSA,L]
+  RewriteRule ^job-opportunities.aspx /job-opportunities [R=301,QSA,L]
+  RewriteRule ^job-opportunities/apply-to-voice-over-talent-roster.aspx /job-opportunities/voice-talent-roster [R=301,QSA,L]
+  RewriteRule ^job-opportunities/apply-to-on-camera-talent-roster.aspx /job-opportunities/camera-roster [R=301,QSA,L]
+  RewriteRule ^job-opportunities/apply-for-internship.aspx /job-opportunities/internships [R=301,QSA,L]
+  RewriteRule ^job-opportunities/submit-your-resume.aspx /job-opportunities/submit-your-resume [R=301,QSA,L]
+  RewriteRule ^feedback.aspx /contact-us/feedback [R=301,QSA,L]
+  RewriteRule ^contact-us/free-live-audition.aspx /contact-us/free-live-audition [R=301,QSA,L]
+  RewriteRule ^contact-us/request-an-estimate.aspx /contact-us/request-estimate [R=301,QSA,L]
+  RewriteRule ^more.aspx /more [R=301,QSA,L]
+  RewriteRule ^voacademy.aspx /more/voice-over-academy [R=301,QSA,L]
+  RewriteRule ^music-production.aspx /music-production [R=301,QSA,L]
+  RewriteRule ^music-production/jingle-writing.aspx /music-production/jingle-writing [R=301,QSA,L]
+  RewriteRule ^music-production/original-music.aspx /music-production/original-music [R=301,QSA,L]
+  RewriteRule ^news-and-events.aspx /more/news [R=301,QSA,L]
+  RewriteRule ^blogpost.aspx /blog-food [R=301,QSA,L]
+  RewriteRule ^news-and-events/press-releases.aspx /press-releases [R=301,QSA,L]
+  RewriteRule ^news-and-events/in-the-news.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^news-and-events/customer-love.aspx /customer-feedback [R=301,QSA,L]
+  RewriteRule ^news-and-events/archive.aspx /more [R=301,QSA,L]
+  RewriteRule ^feeds.aspx /news/rss-feeds [R=301,QSA,L]
+  RewriteRule ^related-services.aspx /services [R=301,QSA,L]
+  RewriteRule ^related-services/casting-assistance.aspx /services/casting-assistance [R=301,QSA,L]
+  RewriteRule ^related-services/clearance-for-licensed-music.aspx /services/music-clearance [R=301,QSA,L]
+  RewriteRule ^related-services/foreign-language-translation.aspx /services/script-translation [R=301,QSA,L]
+  RewriteRule ^related-services/capabilities.aspx /services/capabilities [R=301,QSA,L]
+  RewriteRule ^site-map.aspx /sitemap [R=301,QSA,L]
+  RewriteRule ^talent-sitemap.aspx /sitemap [R=301,QSA,L]
+  RewriteRule ^Login.aspx / [R=301,QSA,L]
+  RewriteRule ^edusamples.aspx /education [R=301,QSA,L]
+  RewriteRule ^actingacademy.aspx /acting-academy [R=301,QSA,L]
+  RewriteRule ^christmascard.aspx /christmas-card [R=301,QSA,L]
+  RewriteRule ^studios/memphis-tn.aspx /locations [R=301,QSA,L]
+  RewriteRule ^studios/virginia-beach-va-video.aspx /locations/virginia-beach-va-video [R=301,QSA,L]
+  # blog posts
+  RewriteRule ^blogpost/52/blogpost.aspx /blog-food/who-are-you-voting [R=301,QSA,L]
+  RewriteRule ^blogpost/28/blogpost.aspx /blog-food/word-your-mother [R=301,QSA,L]
+  RewriteRule ^blogpost/27/blogpost.aspx /blog-food/lessons-customer-service [R=301,QSA,L]
+  RewriteRule ^blogpost/26/blogpost.aspx /blog-food/holiday-survival-blog [R=301,QSA,L]
+  RewriteRule ^blogpost/25/blogpost.aspx /blog-food/please-sell-us-conference-table [R=301,QSA,L]
+  RewriteRule ^blogpost/24/blogpost.aspx /blog-food/we-already-have-website [R=301,QSA,L]
+  RewriteRule ^blogpost/23/blogpost.aspx /blog-food/hey-i-know-guy-stuffed-laundry-chute [R=301,QSA,L]
+  RewriteRule ^blogpost/22/blogpost.aspx /blog-food/blogblog-food-11-how-good-your-website [R=301,QSA,L]
+  RewriteRule ^blogpost/21/blogpost.aspx /blog-food/blogblog-food-10-why-you-should-never-skimp-your-audio [R=301,QSA,L]
+  RewriteRule ^blogpost/17/blogpost.aspx /blog-food/blogblog-food-9-know-any-good-web-guys [R=301,QSA,L]
+  RewriteRule ^blogpost/16/blogpost.aspx /blog-food/blogblog-food-8-2010-year-review [R=301,QSA,L]
+  RewriteRule ^blogpost/15/blogpost.aspx /blog-food/blog-food-7-dp [R=301,QSA,L]
+  RewriteRule ^blogpost/12/blogpost.aspx /blog-food/blog-food-6-creating-great-audio-mix [R=301,QSA,L]
+  RewriteRule ^blogpost/11/blogpost.aspx /blog-food/life-voice-over-artist [R=301,QSA,L]
+  RewriteRule ^blogpost/10/blogpost.aspx /blog-food/people-say-i-have-great-voice [R=301,QSA,L]
+  RewriteRule ^blogpost/9/blogpost.aspx /blog-food/my-slr-can-do [R=301,QSA,L]
+  RewriteRule ^blogpost/8/blogpost.aspx /blog-food/ipad-mania [R=301,QSA,L]
+  RewriteRule ^blogpost/7/blogpost.aspx /blog-food/hows-business [R=301,QSA,L]
+  # press releases
+  RewriteRule ^2013_Best_Place_To_Work.aspx /press-releases/best-places-work [R=301,QSA,L]
+  RewriteRule ^articles/2013/03/top-ten-male-voice-over-talent-mar.aspx /press-releases/newest-top-10-male-vo-talent [R=301,QSA,L]
+  RewriteRule ^articles/2012/04/the-room.aspx /press-releases/room [R=301,QSA,L]
+  # in the news
+  RewriteRule ^behindthescenes.aspx /news-listing/behind-scenes-audi [R=301,QSA,L]
+  RewriteRule ^articles/2012/05/relieve-stress.aspx /news-listing/studio-center-relieves-stress [R=301,QSA,L]
+  RewriteRule ^articles/2012/05/oncameratalent.aspx /news-listing/our-actors-are-thriving [R=301,QSA,L]
+  RewriteRule ^articles/2012/03/richmond-tour.aspx /news-listing/tour-studio-center-richmond [R=301,QSA,L]
+  RewriteRule ^articles/2012/02/2012_locations.aspx /news-listing/come-visit-studio-center [R=301,QSA,L]
+  RewriteRule ^articles/2007/03/you-said-it.aspx /news-listing/you-said-it [R=301,QSA,L]
+  RewriteRule ^articles/2007/01/behind-the-screens.aspx /news-listing/behind-screens [R=301,QSA,L]
+  RewriteRule ^articles/2006/08/where-to-find-god-and-chef.aspx /news-listing/where-find-god-and-chef [R=301,QSA,L]
+  RewriteRule ^articles/2005/08/acquiring-diverse-accents.aspx /news-listing/acquiring-diverse-accents [R=301,QSA,L]
+  RewriteRule ^articles/2004/07/numbers-never-lie.aspx /news-listing/numbers-never-lie [R=301,QSA,L]
+  RewriteRule ^articles/2004/06/memphis-storied-studio-center-sold.aspx /news-listing/memphis-storied-studio-center-sold [R=301,QSA,L]
+  RewriteRule ^articles/2004/06/ex-radio-exec-buys-norfolk-studio.aspx /news-listing/ex-radio-exec-buys-norfolk-studio [R=301,QSA,L]
+  RewriteRule ^ngvt-vb-last-day.aspx /news-listing/last-chance-100000 [R=301,QSA,L]
+  RewriteRule ^new-voice-talent-030613.aspx /news-listing/new-voice-talent [R=301,QSA,L]
+  RewriteRule ^ngvt-santa-monica-last-day.aspx /news-listing/day-2-100000-santa-monica [R=301,QSA,L]
+  RewriteRule ^ngvt-santa-monica1.aspx /news-listing/santa-monica-open-auditions [R=301,QSA,L]
+  RewriteRule ^ngvt-vegas-wrap-up.aspx /news-listing/watch-ngvt-las-vegas-video [R=301,QSA,L]
+  RewriteRule ^new-hire-chris-albert.aspx /news-listing/welcome-chris-albert [R=301,QSA,L]
+  RewriteRule ^las-vegas-tease.aspx /news-listing/las-vegas-here-we-come [R=301,QSA,L]
+  RewriteRule ^2012happyholidays.aspx /news-listing/happy-holidays-studio-center [R=301,QSA,L]
+  # customer feedback
+  RewriteRule ^articles/2010/05/clientlove.aspx /customer-feedback/client-love [R=301,QSA,L]
+  RewriteRule ^articles/2008/04/goldman-and-associates-public-relations-testimonial-to-studio-center.aspx /customer-feedback/goldman-associates-public-relations [R=301,QSA,L]
+  RewriteRule ^articles/2007/03/you-said-it.aspx /customer-feedback/you-said-it [R=301,QSA,L]
+  RewriteRule ^tonic /news-listing/studio-center-total-production-announces-acquisition-new-yorks-tonic-studios [R=301,QSA,L]
+  RewriteRule ^RMorse.aspx /news-listing/studio-center-hires-rana-morse-rich-sales-mgr [R=301,QSA,L]
+  RewriteRule ^2011tellyawards.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^talentlounge.aspx /blog-food [R=301,QSA,L]
+  RewriteRule ^ngvtlaunch.aspx /news-listing/next-great-voice-talent-launches [R=301,QSA,L]
+  RewriteRule ^kboyle.aspx /news-listing/katie-boyle-hired-audio-engprod-richmond [R=301,QSA,L]
+  RewriteRule ^buckleup.aspx /blog-food [R=301,QSA,L]
+  RewriteRule ^ngvtintro\.aspx /blog-food [R=301,QSA,L]
+  RewriteRule ^new-talent-041913.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^new-talent-042313.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^identity-search.aspx /camera-talent/search-all-actors [R=301,QSA,L]
+  RewriteRule ^attn-NY.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^ngvt-ny-auditions.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^new-voice-021313.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^new-talent-032813.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^new-talent-041813.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^new-talent-032713.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^new-talent-050113.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^new-talent-032513.aspx /news-listing [R=301,QSA,L]
+  RewriteRule ^new-talent-051013.aspx /news-listing [R=301,QSA,L]
+
+  # redirect default.aspx
+  RewriteRule ^default.aspx / [R=301,QSA,L]
+  # Set "protossl" to "s" if we were accessed via https://.  This is used later
+  # if you enable "www." stripping or enforcement, in order to ensure that
+  # you don't bounce between http and https.
+  RewriteRule ^ - [E=protossl]
+  RewriteCond %{HTTPS} on
+  RewriteRule ^ - [E=protossl:s]
+
+  # Make sure Authorization HTTP header is available to PHP
+  # even when running as CGI or FastCGI.
+  RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+  # Block access to "hidden" directories whose names begin with a period. This
+  # includes directories used by version control systems such as Subversion or
+  # Git to store control files. Files whose names begin with a period, as well
+  # as the control files used by CVS, are protected by the FilesMatch directive
+  # above.
+  #
+  # NOTE: This only works when mod_rewrite is loaded. Without mod_rewrite, it is
+  # not possible to block access to entire directories from .htaccess, because
+  # <DirectoryMatch> is not allowed here.
+  #
+  # If you do not have mod_rewrite installed, you should remove these
+  # directories from your webroot or otherwise protect them from being
+  # downloaded.
+  RewriteRule "(^|/)\." - [F]
+
+  # If your site can be accessed both with and without the 'www.' prefix, you
+  # can use one of the following settings to redirect users to your preferred
+  # URL, either WITH or WITHOUT the 'www.' prefix. Choose ONLY one option:
+  #
+  # To redirect all users to access the site WITH the 'www.' prefix,
+  # (http://example.com/... will be redirected to http://www.example.com/...)
+  # uncomment the following:
+  # RewriteCond %{HTTP_HOST} .
+  # RewriteCond %{HTTP_HOST} !^www\. [NC]
+  # RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  #
+  # To redirect all users to access the site WITHOUT the 'www.' prefix,
+  # (http://www.example.com/... will be redirected to http://example.com/...)
+  # uncomment the following:
+  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  # RewriteRule ^ http%{ENV:protossl}://%1%{REQUEST_URI} [L,R=301]
+
+  # Modify the RewriteBase if you are using Drupal in a subdirectory or in a
+  # VirtualDocumentRoot and the rewrite rules are not working properly.
+  # For example if your site is at http://example.com/drupal uncomment and
+  # modify the following line:
+  # RewriteBase /drupal
+  #
+  # If your site is running in a VirtualDocumentRoot at http://example.com/,
+  # uncomment the following line:
+  # RewriteBase /
+
+  # Pass all requests not referring directly to files in the filesystem to
+  # index.php. Clean URLs are handled in drupal_environment_initialize().
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !=/favicon.ico
+  RewriteRule ^ index.php [L]
+
+  # Rules to correctly serve gzip compressed CSS and JS files.
+  # Requires both mod_rewrite and mod_headers to be enabled.
+  <IfModule mod_headers.c>
+    # Serve gzip compressed CSS files if they exist and the client accepts gzip.
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteRule ^(.*)\.css $1\.css\.gz [QSA]
+
+    # Serve gzip compressed JS files if they exist and the client accepts gzip.
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteRule ^(.*)\.js $1\.js\.gz [QSA]
+
+    # Serve correct content types, and prevent mod_deflate double gzip.
+    RewriteRule \.css\.gz$ - [T=text/css,E=no-gzip:1]
+    RewriteRule \.js\.gz$ - [T=text/javascript,E=no-gzip:1]
+
+    <FilesMatch "(\.js\.gz|\.css\.gz)$">
+      # Serve correct encoding type.
+      Header set Content-Encoding gzip
+      # Force proxies to cache gzipped & non-gzipped css/js files separately.
+      Header append Vary Accept-Encoding
+    </FilesMatch>
+  </IfModule>
+</IfModule>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="AdapterAbstract.php" server="66.147.244.197//public_html/" local="129482175022891922" remote="129501949200000000" />
+<file name="AdapterInterface.php" server="66.147.244.197//public_html/" local="129482175019261714" remote="129501949200000000" />
+<file name="Code25.php" server="66.147.244.197//public_html/" local="129482175023401951" remote="129501949200000000" />
+<file name="Code25interleaved.php" server="66.147.244.197//public_html/" local="129482175018611677" remote="129501949200000000" />
+<file name="Code39.php" server="66.147.244.197//public_html/" local="129482175018841690" remote="129501949200000000" />
+<file name="Code39ext.php" server="66.147.244.197//public_html/" local="129482175016201539" remote="129501949200000000" />
+<file name="Code93.php" server="66.147.244.197//public_html/" local="129482175015591504" remote="129501949200000000" />
+<file name="Code93ext.php" server="66.147.244.197//public_html/" local="129482175014371435" remote="129501949200000000" />
+<file name="Ean12.php" server="66.147.244.197//public_html/" local="129482175014741456" remote="129501949200000000" />
+<file name="Ean13.php" server="66.147.244.197//public_html/" local="129482175012621334" remote="129501949200000000" />
+<file name="Ean14.php" server="66.147.244.197//public_html/" local="129482175011591276" remote="129501949200000000" />
+<file name="Ean18.php" server="66.147.244.197//public_html/" local="129482175011221254" remote="129501949200000000" />
+<file name="Ean2.php" server="66.147.244.197//public_html/" local="129482175011011242" remote="129501949200000000" />
+<file name="Ean5.php" server="66.147.244.197//public_html/" local="129482175008861119" remote="129501949200000000" />
+<file name="Ean8.php" server="66.147.244.197//public_html/" local="129482175007961068" remote="129501949200000000" />
+<file name="Gtin12.php" server="66.147.244.197//public_html/" local="129482175007861062" remote="129501949200000000" />
+<file name="Gtin13.php" server="66.147.244.197//public_html/" local="129482175007361034" remote="129501949200000000" />
+<file name="Gtin14.php" server="66.147.244.197//public_html/" local="129482175004800887" remote="129501949200000000" />
+<file name="Identcode.php" server="66.147.244.197//public_html/" local="129482175005550930" remote="129501949200000000" />
+<file name="Intelligentmail.php" server="66.147.244.197//public_html/" local="129482175004460868" remote="129501949200000000" />
+<file name="Issn.php" server="66.147.244.197//public_html/" local="129482175004380863" remote="129501949200000000" />
+<file name="Itf14.php" server="66.147.244.197//public_html/" local="129482175001340689" remote="129501949200000000" />
+<file name="Leitcode.php" server="66.147.244.197//public_html/" local="129482175000500641" remote="129501949200000000" />
+<file name="Planet.php" server="66.147.244.197//public_html/" local="129482174999410579" remote="129501949200000000" />
+<file name="Postnet.php" server="66.147.244.197//public_html/" local="129482174999090561" remote="129501949200000000" />
+<file name="Royalmail.php" server="66.147.244.197//public_html/" local="129482174997600475" remote="129501949200000000" />
+<file name="Sscc.php" server="66.147.244.197//public_html/" local="129482174996530414" remote="129501949200000000" />
+<file name="Upca.php" server="66.147.244.197//public_html/" local="129482174995050329" remote="129501949200000000" />
+<file name="Upce.php" server="66.147.244.197//public_html/" local="129482174994600304" remote="129501949200000000" />
+</dwsync>

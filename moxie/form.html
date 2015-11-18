@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Moxie Form</title>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<style>
+img{
+	padding:0;
+	margin:0;
+	display:block;
+}
+.slide2,.slide3,.slide4{
+	display:none;
+}
+.slideWrap{
+	position:relative;
+	width:640px;
+	height:360px;
+	overflow:hidden;
+	margin:0 auto;
+}
+.slide {
+	position:absolute;
+	top:0;
+	left:0;
+}
+</style>
+</head>
+
+<body>
+<div class="slideWrap">
+<img class="slide slide1" src="img/slide1.jpg" alt="" width="640" height="360" usemap="#Map"/>
+<map name="Map">
+  <area shape="rect" coords="252,248,358,300" href="javascript: void(0)" onClick="nextSlide(2)">
+</map>
+<img class="slide slide2" src="img/slide2.jpg" alt="" width="640" height="360" usemap="#Map2"/>
+<map name="Map2">
+  <area shape="rect" coords="254,252,360,301" href="javascript: void(0)" onClick="nextSlide(3)">
+</map>
+<img class="slide slide3" src="img/slide3.jpg" alt="" width="640" height="360" usemap="#Map3"/>
+<map name="Map3">
+  <area shape="rect" coords="249,254,357,293" href="javascript: void(0)" onClick="nextSlide(4)">
+</map>
+<img class="slide slide4" src="img/slide4.jpg" alt="" width="640" height="360" usemap="#Map4"/>
+<map name="Map4">
+  <area shape="rect" coords="179,237,455,289" href="javascript: void(0)" onClick="nextSlide(1)">
+  <area shape="rect" coords="260,300,382,328" href="javascript: void(0)" onClick="nextSlide(1)">
+</map>
+</div>
+<script>
+var prevSlide = 1;
+
+var performTransIn = function(slideId){
+	
+	var transID = Math.floor((Math.random() * 2));
+
+	switch(transID){
+		case 0:
+			if($('.slide'+slideId).height() == 0) $('.slide'+slideId).animate({'height':'360px'},500);
+			$('.slide'+slideId).fadeIn(500);
+		break;
+		case 1:
+			if($('.slide'+slideId).css('display') == 'none') $('.slide'+slideId).fadeIn(500);
+			$('.slide'+slideId).animate({'height':'360px'},500);
+		break;
+		case 2:
+			if($('.slide'+slideId).css('display') == 'none') $('.slide'+slideId).fadeIn(500);
+			$('.slide'+slideId).animate({'width':'360px'},500);
+		break;
+	}
+
+}
+
+var performTransOut = function(slideId){
+	
+	var transID = Math.floor((Math.random() * 2));
+
+	switch(transID){
+		case 0:
+			$('.slide'+slideId).fadeOut(500);
+		break;
+		case 1:
+			$('.slide'+slideId).animate({'height':'0px'},500);
+		break;
+		case 2:
+			$('.slide'+slideId).animate({'width':'0px'},500);
+		break;
+	}
+
+}
+
+var nextSlide = function(slideNum){
+	performTransOut(prevSlide);
+	performTransIn(slideNum);
+	prevSlide = slideNum;
+}
+
+$(function(){
+});
+</script>
+</body>
+</html>

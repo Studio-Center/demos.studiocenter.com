@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Abstract.php" server="66.147.244.197//public_html/" local="129482174208045315" remote="129501941400000000" />
+<file name="Accessories.php" server="66.147.244.197//public_html/" local="129482174205955196" remote="129501941400000000" />
+<file name="Authentication.php" server="66.147.244.197//public_html/" local="129482174205585175" remote="129501942000000000" />
+<file name="CustomerReview.php" server="66.147.244.197//public_html/" local="129482174205215153" remote="129501942000000000" />
+<file name="Ec2.php" server="66.147.244.197//public_html/" local="129482174204915136" remote="129501942000000000" />
+<file name="EditorialReview.php" server="66.147.244.197//public_html/" local="129482174202945024" remote="129501942000000000" />
+<file name="Exception.php" server="66.147.244.197//public_html/" local="129482174202344989" remote="129501942000000000" />
+<file name="Image.php" server="66.147.244.197//public_html/" local="129482174202114976" remote="129501942000000000" />
+<file name="Item.php" server="66.147.244.197//public_html/" local="129482174201814959" remote="129501942000000000" />
+<file name="ListmaniaList.php" server="66.147.244.197//public_html/" local="129482174199724839" remote="129501942000000000" />
+<file name="Offer.php" server="66.147.244.197//public_html/" local="129482174199144806" remote="129501942000000000" />
+<file name="OfferSet.php" server="66.147.244.197//public_html/" local="129482174198984797" remote="129501942000000000" />
+<file name="Query.php" server="66.147.244.197//public_html/" local="129482174196624662" remote="129501942000000000" />
+<file name="ResultSet.php" server="66.147.244.197//public_html/" local="129482174195984626" remote="129501942000000000" />
+<file name="S3.php" server="66.147.244.197//public_html/" local="129482174197804730" remote="129501942000000000" />
+<file name="SimilarProduct.php" server="66.147.244.197//public_html/" local="129482174192744440" remote="129501942000000000" />
+<file name="SimpleDb.php" server="66.147.244.197//public_html/" local="129482174195534600" remote="129501942000000000" />
+<file name="Sqs.php" server="66.147.244.197//public_html/" local="129482174193624491" remote="129501942000000000" />
+</dwsync>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="AbstractDevice.php" server="66.147.244.197//public_html/" local="129482172691228558" remote="129501268800000000" />
+<file name="Bot.php" server="66.147.244.197//public_html/" local="129482172685708243" remote="129501268800000000" />
+<file name="Checker.php" server="66.147.244.197//public_html/" local="129482172683638124" remote="129501268800000000" />
+<file name="Console.php" server="66.147.244.197//public_html/" local="129482172684328164" remote="129501268800000000" />
+<file name="Desktop.php" server="66.147.244.197//public_html/" local="129482172682998088" remote="129501268800000000" />
+<file name="Device.php" server="66.147.244.197//public_html/" local="129482172681488001" remote="129501268800000000" />
+<file name="Email.php" server="66.147.244.197//public_html/" local="129482172679577892" remote="129501268800000000" />
+<file name="Exception.php" server="66.147.244.197//public_html/" local="129482172677907797" remote="129501268800000000" />
+<file name="Feed.php" server="66.147.244.197//public_html/" local="129482172677257759" remote="129501268800000000" />
+<file name="Mobile.php" server="66.147.244.197//public_html/" local="129482172678887853" remote="129501268800000000" />
+<file name="Offline.php" server="66.147.244.197//public_html/" local="129482172675177640" remote="129501268800000000" />
+<file name="Probe.php" server="66.147.244.197//public_html/" local="129482172673887567" remote="129501268800000000" />
+<file name="Spam.php" server="66.147.244.197//public_html/" local="129482172672357479" remote="129501269400000000" />
+<file name="Storage.php" server="66.147.244.197//public_html/" local="129482172673307533" remote="129501269400000000" />
+<file name="Text.php" server="66.147.244.197//public_html/" local="129482172671267417" remote="129501269400000000" />
+<file name="Validator.php" server="66.147.244.197//public_html/" local="129482172667877223" remote="129501269400000000" />
+</dwsync>

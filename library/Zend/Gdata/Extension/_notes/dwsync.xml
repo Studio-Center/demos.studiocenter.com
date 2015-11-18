@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="AttendeeStatus.php" server="66.147.244.197//public_html/" local="129482172468765834" remote="129501261000000000" />
+<file name="AttendeeType.php" server="66.147.244.197//public_html/" local="129482172468235804" remote="129501261000000000" />
+<file name="Comments.php" server="66.147.244.197//public_html/" local="129482172467895785" remote="129501261000000000" />
+<file name="EntryLink.php" server="66.147.244.197//public_html/" local="129482172466795722" remote="129501261000000000" />
+<file name="EventStatus.php" server="66.147.244.197//public_html/" local="129482172465565651" remote="129501261000000000" />
+<file name="ExtendedProperty.php" server="66.147.244.197//public_html/" local="129482172465195630" remote="129501261600000000" />
+<file name="FeedLink.php" server="66.147.244.197//public_html/" local="129482172464025563" remote="129501261600000000" />
+<file name="OpenSearchItemsPerPage.php" server="66.147.244.197//public_html/" local="129482172463715545" remote="129501261600000000" />
+<file name="OpenSearchStartIndex.php" server="66.147.244.197//public_html/" local="129482172462395470" remote="129501261600000000" />
+<file name="OpenSearchTotalResults.php" server="66.147.244.197//public_html/" local="129482172462035449" remote="129501261600000000" />
+<file name="OriginalEvent.php" server="66.147.244.197//public_html/" local="129482172460525363" remote="129501261600000000" />
+<file name="Rating.php" server="66.147.244.197//public_html/" local="129482172460735375" remote="129501261600000000" />
+<file name="Recurrence.php" server="66.147.244.197//public_html/" local="129482172458825266" remote="129501261600000000" />
+<file name="RecurrenceException.php" server="66.147.244.197//public_html/" local="129482172459205287" remote="129501261600000000" />
+<file name="Reminder.php" server="66.147.244.197//public_html/" local="129482172457425186" remote="129501261600000000" />
+<file name="Transparency.php" server="66.147.244.197//public_html/" local="129482172456685143" remote="129501261600000000" />
+<file name="Visibility.php" server="66.147.244.197//public_html/" local="129482172455735089" remote="129501261600000000" />
+<file name="When.php" server="66.147.244.197//public_html/" local="129482172455025048" remote="129501261600000000" />
+<file name="Where.php" server="66.147.244.197//public_html/" local="129482172453384955" remote="129501261600000000" />
+<file name="Who.php" server="66.147.244.197//public_html/" local="129482172454114996" remote="129501261600000000" />
+</dwsync>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="BaseUserService.php" server="66.147.244.197//public_html/" local="129482174257318134" remote="129501942000000000" />
+<file name="ConferenceCall.php" server="66.147.244.197//public_html/" local="129482174258978229" remote="129501942600000000" />
+<file name="Credential.php" server="66.147.244.197//public_html/" local="129482174254717985" remote="129501942600000000" />
+<file name="Exception.php" server="66.147.244.197//public_html/" local="129482174252477857" remote="129501942600000000" />
+<file name="IpLocation.php" server="66.147.244.197//public_html/" local="129482174252157838" remote="129501942600000000" />
+<file name="LocalSearch.php" server="66.147.244.197//public_html/" local="129482174251727814" remote="129501942600000000" />
+<file name="SecurityTokenServer.php" server="66.147.244.197//public_html/" local="129482174249537689" remote="129501943800000000" />
+<file name="SendSms.php" server="66.147.244.197//public_html/" local="129482174249127665" remote="129501943800000000" />
+<file name="SmsValidation.php" server="66.147.244.197//public_html/" local="129482174248347621" remote="129501943800000000" />
+<file name="VoiceCall.php" server="66.147.244.197//public_html/" local="129482174246747529" remote="129501943800000000" />
+</dwsync>

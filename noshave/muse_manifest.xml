@@ -1,0 +1,194 @@
+<manifest alg="2" build="314" opt="false" iceEnabled="true">
+  <folder name="css">
+    <file name="site_global.css" crc="484634295"/>
+    <file name="index.css" crc="4009171862" ref="index"/>
+    <file name="week2.css" crc="4086498937" ref="week2"/>
+    <file name="week3.css" crc="272381443" ref="week3"/>
+    <file name="week4.css" crc="4213681217" ref="week4"/>
+    <file name="creativebeards.css" crc="3814463053" ref="creativebeards"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="3828297711" ref="index:week2:week3:week4:creativebeards"/>
+    <file name="museutils.js" crc="117816282" ref="index:week2:week3:week4:creativebeards"/>
+    <file name="webpro.js" crc="33264525" ref="index:week2:week3:week4:creativebeards"/>
+    <file name="musewpslideshow.js" crc="272207905" ref="index:week2:week3:week4:creativebeards"/>
+    <file name="jquery.museoverlay.js" crc="466079611" ref="index:week2:week3:week4:creativebeards"/>
+    <file name="touchswipe.js" crc="261777990" ref="index:week2:week3:week4:creativebeards"/>
+    <file name="jquery.watch.js" crc="4199601726" ref="index:week2:week3:week4:creativebeards"/>
+  </folder>
+  <folder name="images">
+    <file name="darryl2.jpg" crc="4010018392" ref="week2"/>
+    <file name="blank.gif" crc="4208392903" ref="index:week2:week3:week4:creativebeards"/>
+    <file name="peteb2.jpg" crc="3933973345" ref="week2"/>
+    <file name="warrick2.jpg" crc="4006859322" ref="week2"/>
+    <file name="allen2.jpg" crc="4338530" ref="week2"/>
+    <file name="gus2.jpg" crc="3861365831" ref="week2"/>
+    <file name="chrisa2.jpg" crc="4226504186" ref="week2"/>
+    <file name="mattd2.jpg" crc="519330045" ref="week2"/>
+    <file name="jonw2.jpg" crc="508259407" ref="week2"/>
+    <file name="jon2.jpg" crc="4165066064" ref="week2"/>
+    <file name="walter2.jpg" crc="4050748454" ref="week2"/>
+    <file name="andrew2.jpg" crc="121631796" ref="week2"/>
+    <file name="dave 2.jpg" crc="4084392561" ref="week2"/>
+    <file name="ken2.jpg" crc="3823841474" ref="week2"/>
+    <file name="chris2.jpg" crc="4024103298" ref="week2"/>
+    <file name="jeff2.jpg" crc="4202669910" ref="week2"/>
+    <file name="steve2.jpg" crc="164653278" ref="week2"/>
+    <file name="trent2.jpg" crc="4067561664" ref="week2"/>
+    <file name="darryl260x46.jpg" crc="3989675541" ref="week2"/>
+    <file name="peteb260x46.jpg" crc="3912844401" ref="week2"/>
+    <file name="warrick260x46.jpg" crc="260078507" ref="week2"/>
+    <file name="allen260x46.jpg" crc="3968828801" ref="week2"/>
+    <file name="gus260x46.jpg" crc="9702755" ref="week2"/>
+    <file name="chrisa260x46.jpg" crc="4229355234" ref="week2"/>
+    <file name="mattd260x46.jpg" crc="335854488" ref="week2"/>
+    <file name="jonw260x46.jpg" crc="3858551279" ref="week2"/>
+    <file name="jon260x46.jpg" crc="108038301" ref="week2"/>
+    <file name="walter260x46.jpg" crc="138335756" ref="week2"/>
+    <file name="andrew260x46.jpg" crc="4001808974" ref="week2"/>
+    <file name="dave 260x46.jpg" crc="387063077" ref="week2"/>
+    <file name="ken260x46.jpg" crc="4212343157" ref="week2"/>
+    <file name="chris260x46.jpg" crc="10654678" ref="week2"/>
+    <file name="jeff260x46.jpg" crc="4175919260" ref="week2"/>
+    <file name="steve260x46.jpg" crc="303422522" ref="week2"/>
+    <file name="trent260x46.jpg" crc="12312698" ref="week2"/>
+    <file name="loading.gif" crc="3815509949" ref="index:week2:week3:week4:creativebeards"/>
+    <file name="alan1.png" crc="318287282" ref="index"/>
+    <file name="gustavo1.png" crc="3791230472" ref="index"/>
+    <file name="darryl1.png" crc="253241017" ref="index"/>
+    <file name="jon1.jpg" crc="4107797018" ref="index"/>
+    <file name="walter1.jpg" crc="3838000786" ref="index"/>
+    <file name="ken1.jpg" crc="278728430" ref="index"/>
+    <file name="chris1.jpg" crc="373850542" ref="index"/>
+    <file name="jeff1.jpg" crc="171414305" ref="index"/>
+    <file name="dave1.jpg" crc="316275332" ref="index"/>
+    <file name="steve1.jpg" crc="4174056652" ref="index"/>
+    <file name="bob1.jpg" crc="293442227" ref="index"/>
+    <file name="josh1.jpg" crc="366075962" ref="index"/>
+    <file name="chrisa1.jpg" crc="3852906809" ref="index"/>
+    <file name="alan160x46.png" crc="499554081" ref="index"/>
+    <file name="gustavo160x46.png" crc="51550257" ref="index"/>
+    <file name="matt-d160x46.jpg" crc="3976826083" ref="index"/>
+    <file name="jon-w160x46.jpg" crc="3791384893" ref="index"/>
+    <file name="pete-p160x46.jpg" crc="4186241245" ref="index"/>
+    <file name="warrick160x46.jpg" crc="384938484" ref="index"/>
+    <file name="pete-b160x46.jpg" crc="4214969592" ref="index"/>
+    <file name="steve160x46.jpg" crc="165362073" ref="index"/>
+    <file name="darryl160x46.png" crc="4170867234" ref="index"/>
+    <file name="trent160x46.jpg" crc="3963437852" ref="index"/>
+    <file name="nathan160x46.jpg" crc="3949570105" ref="index"/>
+    <file name="andrew160x46.jpg" crc="405194691" ref="index"/>
+    <file name="jon160x46.jpg" crc="4143164350" ref="index"/>
+    <file name="walter160x46.jpg" crc="460263173" ref="index"/>
+    <file name="ken160x46.jpg" crc="4058846953" ref="index"/>
+    <file name="chris160x46.jpg" crc="276218966" ref="index"/>
+    <file name="jeff160x46.jpg" crc="391489668" ref="index"/>
+    <file name="dave160x46.jpg" crc="3947591329" ref="index"/>
+    <file name="steve160x462.jpg" crc="3977021037" ref="index"/>
+    <file name="bob160x46.jpg" crc="527621227" ref="index"/>
+    <file name="josh160x46.jpg" crc="453755297" ref="index"/>
+    <file name="chrisa160x46.jpg" crc="372707966" ref="index"/>
+    <file name="matt-d1.jpg" crc="242213338" ref="index"/>
+    <file name="jon-w1.jpg" crc="4090435334" ref="index"/>
+    <file name="pete-p1.jpg" crc="10249620" ref="index"/>
+    <file name="warrick1.jpg" crc="3895847260" ref="index"/>
+    <file name="pete-b1.jpg" crc="156063292" ref="index"/>
+    <file name="trent1.jpg" crc="3854858731" ref="index"/>
+    <file name="nathan1.jpg" crc="4229353749" ref="index"/>
+    <file name="andrew1.jpg" crc="70595528" ref="index"/>
+    <file name="steve12.jpg" crc="3947412554" ref="index"/>
+    <file name="davef3.jpg" crc="490175776" ref="week3"/>
+    <file name="jonw3.jpg" crc="4052572944" ref="week3"/>
+    <file name="rob3.jpg" crc="287026208" ref="week3"/>
+    <file name="mattd3.jpg" crc="3806718087" ref="week3"/>
+    <file name="nick3.jpg" crc="525350202" ref="week3"/>
+    <file name="chrisa3.jpg" crc="4018366416" ref="week3"/>
+    <file name="warrick3.jpg" crc="202185054" ref="week3"/>
+    <file name="allen3.jpg" crc="3831633682" ref="week3"/>
+    <file name="darryl3.jpg" crc="245419404" ref="week3"/>
+    <file name="ken3.jpg" crc="471521729" ref="week3"/>
+    <file name="jon3.jpg" crc="3919736690" ref="week3"/>
+    <file name="walt3.jpg" crc="3924347020" ref="week3"/>
+    <file name="jeff3.jpg" crc="503212325" ref="week3"/>
+    <file name="andrew3.jpg" crc="17977956" ref="week3"/>
+    <file name="dave3.jpg" crc="56180576" ref="week3"/>
+    <file name="peteb3.jpg" crc="106683745" ref="week3"/>
+    <file name="petep3.jpg" crc="4235967878" ref="week3"/>
+    <file name="davef360x46.jpg" crc="4198797288" ref="week3"/>
+    <file name="jonw360x46.jpg" crc="4234132141" ref="week3"/>
+    <file name="rob360x46.jpg" crc="4238699034" ref="week3"/>
+    <file name="mattd360x46.jpg" crc="94021597" ref="week3"/>
+    <file name="nick360x46.jpg" crc="4067603209" ref="week3"/>
+    <file name="chrisa360x46.jpg" crc="4134880574" ref="week3"/>
+    <file name="warrick360x46.jpg" crc="4018445166" ref="week3"/>
+    <file name="allen360x46.jpg" crc="386625884" ref="week3"/>
+    <file name="darryl360x46.jpg" crc="231332894" ref="week3"/>
+    <file name="ken360x46.jpg" crc="4040248986" ref="week3"/>
+    <file name="jon360x46.jpg" crc="4029389270" ref="week3"/>
+    <file name="walt360x46.jpg" crc="133749911" ref="week3"/>
+    <file name="jeff360x46.jpg" crc="481245121" ref="week3"/>
+    <file name="andrew360x46.jpg" crc="4046188638" ref="week3"/>
+    <file name="dave360x46.jpg" crc="85919731" ref="week3"/>
+    <file name="peteb360x46.jpg" crc="4255154062" ref="week3"/>
+    <file name="petep360x46.jpg" crc="3847502489" ref="week3"/>
+    <file name="davef2.jpg" crc="4124661959" ref="week2"/>
+    <file name="rob2.jpg" crc="84731049" ref="week2"/>
+    <file name="davef260x46.jpg" crc="134472366" ref="week2"/>
+    <file name="rob260x46.jpg" crc="3902859607" ref="week2"/>
+    <file name="trent3.jpg" crc="4032919031" ref="week3"/>
+    <file name="trent360x46.jpg" crc="10324031" ref="week3"/>
+    <file name="davef4.jpg" crc="4181548165" ref="week4"/>
+    <file name="peteb4.jpg" crc="3795459641" ref="week4"/>
+    <file name="jonw4.jpg" crc="404490447" ref="week4"/>
+    <file name="warrick4.jpg" crc="404779689" ref="week4"/>
+    <file name="matt4.jpg" crc="3855402696" ref="week4"/>
+    <file name="rob4.jpg" crc="478360797" ref="week4"/>
+    <file name="alan4.jpg" crc="235837364" ref="week4"/>
+    <file name="gustavo4.jpg" crc="428442578" ref="week4"/>
+    <file name="chrisa4.jpg" crc="251882216" ref="week4"/>
+    <file name="petep4.jpg" crc="3981469798" ref="week4"/>
+    <file name="dave4.jpg" crc="4018459421" ref="week4"/>
+    <file name="jeff4.jpg" crc="4170488229" ref="week4"/>
+    <file name="ken4.jpg" crc="4036160712" ref="week4"/>
+    <file name="steve4.jpg" crc="3858705880" ref="week4"/>
+    <file name="walter4.jpg" crc="74654351" ref="week4"/>
+    <file name="davef460x46.jpg" crc="57218504" ref="week4"/>
+    <file name="peteb460x46.jpg" crc="107171219" ref="week4"/>
+    <file name="jonw460x46.jpg" crc="260553268" ref="week4"/>
+    <file name="warrick460x46.jpg" crc="4274768806" ref="week4"/>
+    <file name="matt460x46.jpg" crc="247168082" ref="week4"/>
+    <file name="rob460x46.jpg" crc="4097890008" ref="week4"/>
+    <file name="alan460x46.jpg" crc="4035511371" ref="week4"/>
+    <file name="gustavo460x46.jpg" crc="4235083124" ref="week4"/>
+    <file name="chrisa460x46.jpg" crc="304827722" ref="week4"/>
+    <file name="petep460x46.jpg" crc="4115946056" ref="week4"/>
+    <file name="dave460x46.jpg" crc="254730614" ref="week4"/>
+    <file name="jeff460x46.jpg" crc="3935929052" ref="week4"/>
+    <file name="ken460x46.jpg" crc="111042169" ref="week4"/>
+    <file name="steve460x46.jpg" crc="513280360" ref="week4"/>
+    <file name="walter460x46.jpg" crc="3763556636" ref="week4"/>
+    <file name="jon4.jpg" crc="275513543" ref="week4"/>
+    <file name="jon460x46.jpg" crc="320817379" ref="week4"/>
+    <file name="darryl4.jpg" crc="4023839068" ref="week4"/>
+    <file name="chris4.jpg" crc="3993732078" ref="week4"/>
+    <file name="andrew4.jpg" crc="425532090" ref="week4"/>
+    <file name="trent4.jpg" crc="48505455" ref="week4"/>
+    <file name="darryl460x46.jpg" crc="4167663963" ref="week4"/>
+    <file name="chris460x46.jpg" crc="3853845989" ref="week4"/>
+    <file name="andrew460x46.jpg" crc="4271978229" ref="week4"/>
+    <file name="trent460x46.jpg" crc="3867578017" ref="week4"/>
+    <file name="the gangis kahn.jpg" crc="222170026" ref="creativebeards"/>
+    <file name="the friendly mutten chops.jpg" crc="4120915999" ref="creativebeards"/>
+    <file name="the yankovick.jpg" crc="266429100" ref="creativebeards"/>
+    <file name="the monkey tail.jpg" crc="27030678" ref="creativebeards"/>
+    <file name="the gangis kahn60x46.jpg" crc="418387425" ref="creativebeards"/>
+    <file name="the friendly mutten chops60x46.jpg" crc="4236372308" ref="creativebeards"/>
+    <file name="the yankovick60x46.jpg" crc="522684775" ref="creativebeards"/>
+    <file name="the monkey tail60x46.jpg" crc="328529290" ref="creativebeards"/>
+  </folder>
+  <file name="index.html" crc="4258482418" mt="1384877611763" redirect="true"/>
+  <file name="week2.html" crc="86121279" mt="1384877845836" redirect="true"/>
+  <file name="week3.html" crc="4071566099" mt="1385508171253" redirect="true"/>
+  <file name="week4.html" crc="3811826907" mt="1386086057817" redirect="true"/>
+  <file name="creativebeards.html" crc="523337205" mt="1386086686772" redirect="true"/>
+</manifest>

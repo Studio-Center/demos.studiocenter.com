@@ -1,0 +1,251 @@
+.version.index /* version checker */
+{
+	color: #000019;
+	background-color: #44186F;
+}
+
+.html
+{
+	background-color: #FFFFFF;
+}
+
+#page
+{
+	z-index: 1;
+	width: 960px;
+	min-height: 1132px;
+	background-image: none;
+	border-style: none;
+	border-color: #000000;
+	background-color: transparent;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#page_position_content
+{
+	margin-top: -36px;
+	margin-bottom: -15px;
+}
+
+#pu75
+{
+	width: 0.01px;
+	margin-left: -100px;
+}
+
+#u75
+{
+	z-index: 2;
+	width: 727px;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 36px;
+	left: 200px;
+}
+
+#u75_img
+{
+	padding-right: 1px;
+}
+
+#u112
+{
+	z-index: 4;
+	height: 548px;
+	border-style: none;
+	border-color: transparent;
+	opacity: 0.13;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=13)";
+	filter: alpha(opacity=13);
+	background: transparent url("../images/vignette.png") no-repeat center center;
+	background-size: cover;
+}
+
+#u112-bw
+{
+	z-index: 4;
+	height: 548px;
+}
+
+#pu154
+{
+	width: 0.01px;
+	margin-left: -167px;
+	margin-top: -439px;
+}
+
+#pu154_position_content
+{
+	margin-top: -11px;
+	padding-bottom: 406px;
+}
+
+#u154
+{
+	z-index: 38;
+	width: 295px;
+	background-color: transparent;
+	position: fixed;
+	top: 73px;
+	left: 721px;
+}
+
+#u148
+{
+	z-index: 10;
+	width: 215px;
+	background-color: transparent;
+	position: fixed;
+	top: 111px;
+	left: -150px;
+}
+
+#u121
+{
+	z-index: 34;
+	width: 334px;
+	background-color: transparent;
+	position: fixed;
+	top: 137px;
+	left: -167px;
+}
+
+#u121_img
+{
+	padding-right: 1px;
+	padding-bottom: 1px;
+}
+
+#u127
+{
+	z-index: 28;
+	width: 235px;
+	background-color: transparent;
+	position: fixed;
+	top: 223px;
+	left: 0px;
+}
+
+#u133
+{
+	z-index: 36;
+	width: 326px;
+	background-color: transparent;
+	position: fixed;
+	top: 329px;
+	left: 734px;
+}
+
+#u81-4
+{
+	z-index: 6;
+	width: 742px;
+	background-color: transparent;
+	line-height: 50px;
+	font-size: 42px;
+	text-align: center;
+	font-family: amatic-sc, sans-serif;
+	font-weight: 700;
+	margin-left: 92px;
+	margin-top: 41px;
+	position: relative;
+}
+
+#u83-15
+{
+	z-index: 12;
+	width: 516px;
+	background-color: transparent;
+	text-align: center;
+	font-family: Geneva, Verdana, Lucida Sans, Lucida Sans Unicode, sans-serif;
+	margin-left: 205px;
+	margin-top: 25px;
+	position: relative;
+}
+
+#u83-2
+{
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: bold;
+}
+
+#u83-6
+{
+	font-size: 16px;
+	line-height: 19px;
+}
+
+#u102
+{
+	z-index: 27;
+	min-height: 327px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+}
+
+#u102-bw
+{
+	z-index: 27;
+	min-height: 327px;
+	margin-top: 46px;
+	height: 327px;
+}
+
+#u105
+{
+	z-index: 5;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	padding-bottom: 45px;
+}
+
+#u105_align_to_page
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	position: relative;
+	left: -100px;
+	margin-bottom: -694px;
+}
+
+#u120-4
+{
+	z-index: 30;
+	width: 294px;
+	min-height: 19px;
+	background-color: transparent;
+	line-height: 12px;
+	font-size: 10px;
+	text-align: center;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 707px;
+	left: 416px;
+}
+
+#u105-bw
+{
+	z-index: 5;
+	margin-top: -694px;
+	height: 726px;
+}
+
+body
+{
+	position: relative;
+	min-width: 960px;
+	padding-top: 36px;
+	padding-bottom: 22px;
+}
+
+#page .verticalspacer
+{
+	clear: both;
+}
+

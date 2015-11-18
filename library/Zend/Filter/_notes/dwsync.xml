@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Alnum.php" server="66.147.244.197//public_html/" local="129482172217241448" remote="129501254400000000" />
+<file name="Alpha.php" server="66.147.244.197//public_html/" local="129482172216711418" remote="129501254400000000" />
+<file name="BaseName.php" server="66.147.244.197//public_html/" local="129482172215661358" remote="129501254400000000" />
+<file name="Boolean.php" server="66.147.244.197//public_html/" local="129482172216941431" remote="129501254400000000" />
+<file name="Callback.php" server="66.147.244.197//public_html/" local="129482172214011263" remote="129501254400000000" />
+<file name="Compress.php" server="66.147.244.197//public_html/" local="129482172212961203" remote="129501255000000000" />
+<file name="Decompress.php" server="66.147.244.197//public_html/" local="129482172212371169" remote="129501255000000000" />
+<file name="Decrypt.php" server="66.147.244.197//public_html/" local="129482172211431116" remote="129501255000000000" />
+<file name="Digits.php" server="66.147.244.197//public_html/" local="129482172210471061" remote="129501255000000000" />
+<file name="Dir.php" server="66.147.244.197//public_html/" local="129482172209641013" remote="129501255000000000" />
+<file name="Encrypt.php" server="66.147.244.197//public_html/" local="129482172209090982" remote="129501255000000000" />
+<file name="Exception.php" server="66.147.244.197//public_html/" local="129482172206430830" remote="129501255000000000" />
+<file name="HtmlEntities.php" server="66.147.244.197//public_html/" local="129482172205950802" remote="129501255000000000" />
+<file name="Inflector.php" server="66.147.244.197//public_html/" local="129482172207440887" remote="129501255600000000" />
+<file name="Input.php" server="66.147.244.197//public_html/" local="129482172208040922" remote="129501255600000000" />
+<file name="Int.php" server="66.147.244.197//public_html/" local="129482172203210645" remote="129501255600000000" />
+<file name="Interface.php" server="66.147.244.197//public_html/" local="129482172202790621" remote="129501255600000000" />
+<file name="LocalizedToNormalized.php" server="66.147.244.197//public_html/" local="129482172202350596" remote="129501255600000000" />
+<file name="NormalizedToLocalized.php" server="66.147.244.197//public_html/" local="129482172199710445" remote="129501255600000000" />
+<file name="Null.php" server="66.147.244.197//public_html/" local="129482172199510434" remote="129501255600000000" />
+<file name="PregReplace.php" server="66.147.244.197//public_html/" local="129482172198700387" remote="129501255600000000" />
+<file name="RealPath.php" server="66.147.244.197//public_html/" local="129482172196350253" remote="129501255600000000" />
+<file name="StringToLower.php" server="66.147.244.197//public_html/" local="129482172195910228" remote="129501255600000000" />
+<file name="StringToUpper.php" server="66.147.244.197//public_html/" local="129482172194770163" remote="129501255600000000" />
+<file name="StringTrim.php" server="66.147.244.197//public_html/" local="129482172193160071" remote="129501255600000000" />
+<file name="StripNewlines.php" server="66.147.244.197//public_html/" local="129482172192480032" remote="129501255600000000" />
+<file name="StripTags.php" server="66.147.244.197//public_html/" local="129482172189679871" remote="129501255600000000" />
+</dwsync>

@@ -1,0 +1,30 @@
+.html
+{
+	background-color: #744C11;
+}
+img{
+	max-width:100%;
+	height:auto;
+}
+#page
+{
+	z-index: 1;
+	width:100%;
+	min-height: 1023px;
+	background-image: none;
+	border-style: none;
+	border-color: #000000;
+	background-color: transparent;
+	padding-bottom: 1px;
+	margin:0 auto;
+}
+#u75{
+	float:left;
+	width:auto;
+	max-width:315px;
+	min-width:315px;
+}
+#pu185{
+	float:left;
+	width:auto;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Abstract.php" server="66.147.244.197//public_html/" local="129482174993730254" remote="129501949200000000" />
+<file name="Alnum.php" server="66.147.244.197//public_html/" local="129482174991700138" remote="129501949200000000" />
+<file name="Alpha.php" server="66.147.244.197//public_html/" local="129482174990390063" remote="129501949200000000" />
+<file name="Barcode.php" server="66.147.244.197//public_html/" local="129482174990690080" remote="129501949200000000" />
+<file name="Between.php" server="66.147.244.197//public_html/" local="129482174988969982" remote="129501949200000000" />
+<file name="Callback.php" server="66.147.244.197//public_html/" local="129482174987779914" remote="129501949200000000" />
+<file name="Ccnum.php" server="66.147.244.197//public_html/" local="129482174986759855" remote="129501949200000000" />
+<file name="CreditCard.php" server="66.147.244.197//public_html/" local="129482174986509841" remote="129501949200000000" />
+<file name="Date.php" server="66.147.244.197//public_html/" local="129482174985129762" remote="129501949200000000" />
+<file name="Digits.php" server="66.147.244.197//public_html/" local="129482174983659678" remote="129501949200000000" />
+<file name="EmailAddress.php" server="66.147.244.197//public_html/" local="129482174984079702" remote="129501949200000000" />
+<file name="Exception.php" server="66.147.244.197//public_html/" local="129482174981019527" remote="129501949200000000" />
+<file name="Float.php" server="66.147.244.197//public_html/" local="129482174980559501" remote="129501949800000000" />
+<file name="GreaterThan.php" server="66.147.244.197//public_html/" local="129482174978959409" remote="129501949800000000" />
+<file name="Hex.php" server="66.147.244.197//public_html/" local="129482174977889348" remote="129501949800000000" />
+<file name="Hostname.php" server="66.147.244.197//public_html/" local="129482174981299543" remote="129501949800000000" />
+<file name="Iban.php" server="66.147.244.197//public_html/" local="129482174977509326" remote="129501949800000000" />
+<file name="Identical.php" server="66.147.244.197//public_html/" local="129482174975759226" remote="129501949800000000" />
+<file name="InArray.php" server="66.147.244.197//public_html/" local="129482174974719167" remote="129501949800000000" />
+<file name="Int.php" server="66.147.244.197//public_html/" local="129482174974339145" remote="129501949800000000" />
+<file name="Interface.php" server="66.147.244.197//public_html/" local="129482174973239082" remote="129501949800000000" />
+<file name="Ip.php" server="66.147.244.197//public_html/" local="129482174972689050" remote="129501949800000000" />
+<file name="Isbn.php" server="66.147.244.197//public_html/" local="129482174971378976" remote="129501949800000000" />
+<file name="LessThan.php" server="66.147.244.197//public_html/" local="129482174971138962" remote="129501949800000000" />
+<file name="NotEmpty.php" server="66.147.244.197//public_html/" local="129482174969928893" remote="129501949800000000" />
+<file name="PostCode.php" server="66.147.244.197//public_html/" local="129482174969628875" remote="129501949800000000" />
+<file name="Regex.php" server="66.147.244.197//public_html/" local="129482174967338744" remote="129501949800000000" />
+<file name="StringLength.php" server="66.147.244.197//public_html/" local="129482174965618646" remote="129501949800000000" />
+</dwsync>
